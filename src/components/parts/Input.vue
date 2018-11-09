@@ -17,12 +17,14 @@ export default {
     onSubmit: Function,
     submitOnBlur: Boolean,
     data: String,
+    align: String,
     clearOnSubmit: Boolean
   },
     data () {
     return {
       input: "",
-      Focus: true
+      Focus: true,
+      align: "center"
     }
   },
 
@@ -47,14 +49,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .Input{
   width: 100%;
   border: 0px;
   outline: 0;
   font-size: inherit;
-  text-align: center;
   background: none;
+  text-align: {{align}};
   padding: 10px;
 }
 </style>

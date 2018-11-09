@@ -1,7 +1,7 @@
 <template>
   <div class="List">
-    <Input :onSubmit="setTitle" :submitOnBlur="false" :data="title" :clearOnSubmit="false"></Input>
-  <Input :onSubmit="additem" :submitOnBlur="false" :clearOnSubmit="true"></Input>
+    <Input :onSubmit="setTitle" :submitOnBlur="false" :data="title" :clearOnSubmit="false" :align="left"></Input>
+  <Input :onSubmit="additem" :submitOnBlur="false" :clearOnSubmit="true" :align="center"></Input>
   <div v-for="(item, index) in items">
         <ListItem v-bind:item="item"></ListItem>
   </div>
