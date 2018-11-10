@@ -1,13 +1,15 @@
 <template>
-<div class="InputWrapper">
+<div class="InputWrapper"
+v-bind:style="{ backgroundColor: bgColor, color: fontColor, fontSize: Sizes[size]}"
+>
 <input type="text" class="Input"
+v-bind:style="{ backgroundColor: bgColor, color: fontColor, textAlign: txtAlign}"
 
   v-model="value"
   contentEditable="true"
   @focus="onFocus"
   @blur="onBlur"
   placeholder="Input task"
-  v-bind:style="{ fontSize: Sizes[mySize]}"
   v-on:keypress.13="submit">
 </div>
 </template>
@@ -16,15 +18,15 @@
 import Sizes from '../../helpers/Sizes';
 export default {
   name: 'Input',
-  components: {
-    Sizes
-  },
   props: {
     onSubmit: Function,
     submitOnBlur: Boolean,
     data: String,
     clearOnSubmit: Boolean,
-    size: String
+    size: String,
+    bgColor: String,
+    fontColor: String,
+    txtAlign: String
   },
     data () {
     return {
@@ -52,9 +54,9 @@ export default {
     onFocus() {
 
     },
-    onBlur(){
+    onBlur(e){
       if(this.submitOnBlur){
-        this.submit();
+        this.submit(e);
       }
 
     }
@@ -63,6 +65,10 @@ export default {
 </script>
 
 <style scoped>
+.InputWrapper{
+    border-bottom: 1px solid black;
+    width: 100%;
+}
 .Input{
   width: 100%;
   border: 0px;
@@ -70,6 +76,5 @@ export default {
   font-size: inherit;
   background: none;
   padding: 10px;
-  border-bottom: 1px solid black;
 }
 </style>

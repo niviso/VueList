@@ -1,10 +1,14 @@
 <template>
-  <div class="List">
-    <Input :onSubmit="setTitle" :submitOnBlur="false" :data="title" :clearOnSubmit="false"></Input>
-  <Input :onSubmit="additem" :submitOnBlur="false" :clearOnSubmit="true"></Input>
+  <div class="List"
+  v-bind:style="{ backgroundColor: ColorScheme.primary, color: ColorScheme.fontColor}"
+  >
+    <Input :onSubmit="setTitle" size="l" :submitOnBlur="true" :data="title" :clearOnSubmit="false" :bgColor="ColorScheme.white" :fontColor="ColorScheme.primary"></Input>
+  <Input :onSubmit="additem" size="m" :submitOnBlur="false" :clearOnSubmit="true" txtAlign="center" :bgColor="ColorScheme.secondary" :fontColor="ColorScheme.fontColor"></Input>
+<div class="ListItems">
   <div v-for="(item, index) in items">
-        <ListItem v-bind:item="item" :removeItem="removeItem"></ListItem>
+        <ListItem v-bind:item="item" :removeItem="removeItem" :scheme="scheme"></ListItem>
   </div>
+</div>
   <div v-if="items.length == 0" class="NoItems">No Items</div>
   </div>
 </template>
@@ -12,23 +16,28 @@
 <script>
 import ListItem from './ListItem';
 import Input from './parts/Input';
-import Colors from '../helpers/Colors';
+import ColorScheme from '../helpers/ColorScheme';
+import Sizes from '../helpers/Sizes';
+
 import LocalStorageHelper from '../helpers/LocalStorageHelper';
 
 export default {
   name: 'List',
+  props: {
+    scheme : String
+  },
     components: {
     ListItem,
-    Input,
+    Input
   },
   data () {
     return {
       id: 1,
-      colorPrimary: "red",
-      colorSecondary: "blue",
       items: [],
       title: "My List",
-      history: []
+      history: [],
+      ColorScheme: ColorScheme["red"],
+      Sizes: Sizes
     }
   },
   created: function(){
@@ -81,10 +90,17 @@ export default {
   max-width: 700px;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.ListItems{
+  overflow: auto;
+  width: 100%;
+  height: 100%;
 }
 .NoItems{
   text-align: center;
-  padding: 10px;
-  font-size: 0.75em;
 }
 </style>

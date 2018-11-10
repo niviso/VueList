@@ -1,19 +1,31 @@
 <template>
-  <div class="ListItem">
+  <div class="ListItem"
+  v-bind:style="{ backgroundColor: ColorScheme.primary, color: ColorScheme.fontColor, fontSize: Sizes['m']}"
+
+  >
     <div class="listItemTxt">
     {{item.txt}}
   </div>
-    <div class="ListItemRemove" v-on:click="remove"></div>
+    <div class="ListItemRemove" v-on:click="remove"
+    v-bind:style="{ backgroundColor: ColorScheme.secondary}"
+
+    ></div>
   </div>
 </template>
 
 <script>
+import ColorScheme from '../helpers/ColorScheme';
+import Sizes from '../helpers/Sizes';
 export default {
   name: 'ListItem',
   props: {item: Object,
-  removeItem: Function},
+  removeItem: Function,
+  scheme: String,
+  },
   data () {
     return {
+      ColorScheme: ColorScheme["red"],
+      Sizes: Sizes
     }
   },
   methods: {
@@ -34,6 +46,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: fadeIn 0.25s ease;
 
 }
 .listItemTxt{
@@ -52,5 +65,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity: 0
+  }
+  to{
+    opacity: 1
+  }
 }
 </style>
