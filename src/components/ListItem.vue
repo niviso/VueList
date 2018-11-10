@@ -1,15 +1,9 @@
 <template>
-  <div class="ListItem"
-  v-bind:style="{ backgroundColor: ColorScheme.primary, color: ColorScheme.fontColor, fontSize: Sizes['m']}"
+  <div class="ListItem" v-on:click="remove"
+  v-bind:style="{ backgroundColor:  (parseInt(evenorodd) ? ColorScheme.white : ColorScheme.primary), color: ColorScheme.black, fontSize: Sizes[size], height: Sizes[size]}">
+  <!-- <div class="ListItemRemove" v-on:click="remove" v-bind:style="{ backgroundColor: (parseInt(evenorodd) ? ColorScheme.secondary : ColorScheme.primary)}"></div> -->
 
-  >
-    <div class="listItemTxt">
-    {{item.txt}}
-  </div>
-    <div class="ListItemRemove" v-on:click="remove"
-    v-bind:style="{ backgroundColor: ColorScheme.secondary}"
-
-    ></div>
+    <div class="listItemTxt">{{item.txt}}</div>
   </div>
 </template>
 
@@ -21,10 +15,13 @@ export default {
   props: {item: Object,
   removeItem: Function,
   scheme: String,
+  size: String,
+  evenorodd: Number
+
   },
   data () {
     return {
-      ColorScheme: ColorScheme["red"],
+      ColorScheme: ColorScheme[this.scheme],
       Sizes: Sizes
     }
   },
@@ -42,29 +39,24 @@ export default {
 .ListItem
 {
   width: 100%;
-  border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   animation: fadeIn 0.25s ease;
-
+  padding: 10px;
 }
 .listItemTxt{
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 10px;
+  justify-content: left;
+  width: 100%;
 }
 
 .ListItemRemove{
-  width: 2em;
-  height: 2em;
-  background: red;
-  border-left: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  width: 25%;
+  border-right: 1px solid black
 }
 
 @keyframes fadeIn{

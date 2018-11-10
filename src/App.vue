@@ -11,15 +11,18 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+*{
+  padding: 0px;
+  margin:0px;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: white;
+  background: green;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top:0%;
-  left:0%;
+
 }
 </style>

@@ -1,15 +1,17 @@
 <template>
   <div class="List"
-  v-bind:style="{ backgroundColor: ColorScheme.primary, color: ColorScheme.fontColor}"
-  >
-    <Input :onSubmit="setTitle" size="l" :submitOnBlur="true" :data="title" :clearOnSubmit="false" :bgColor="ColorScheme.white" :fontColor="ColorScheme.primary"></Input>
-  <Input :onSubmit="additem" size="m" :submitOnBlur="false" :clearOnSubmit="true" txtAlign="center" :bgColor="ColorScheme.secondary" :fontColor="ColorScheme.fontColor"></Input>
+  v-bind:style="{ backgroundColor: ColorScheme.backgroundColor, color: ColorScheme.fontColor }">
+  <div class="ListTitle">
+  <Input fontSize="l" :onSubmit="setTitle" txtAlign="left" size="l" :submitOnBlur="true" :data="title" :clearOnSubmit="false" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.fontColor"></Input>
+</div>
+  <Input fontSize="l" :autoFocus="true" class="ListInput" :autoComplete="history" :onSubmit="additem" size="l" :submitOnBlur="false" :clearOnSubmit="true" txtAlign="center" :bgColor="ColorScheme.white" :fontColor="ColorScheme.black"></Input>
 <div class="ListItems">
   <div v-for="(item, index) in items">
-        <ListItem v-bind:item="item" :removeItem="removeItem" :scheme="scheme"></ListItem>
+        <ListItem size="m" v-bind:item="item" :removeItem="removeItem" :evenorodd="index%2" :scheme="scheme"></ListItem>
   </div>
+  <div v-if="items.length == 0" class="NoItems"  v-bind:style="{fontSize: Sizes['l'], color: ColorScheme.fontColor}">Empty</div>
+
 </div>
-  <div v-if="items.length == 0" class="NoItems">No Items</div>
   </div>
 </template>
 
@@ -36,7 +38,7 @@ export default {
       items: [],
       title: "My List",
       history: [],
-      ColorScheme: ColorScheme["red"],
+      ColorScheme: ColorScheme[this.scheme],
       Sizes: Sizes
     }
   },
@@ -89,18 +91,32 @@ export default {
   width: 100%;
   max-width: 700px;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 10px;
 }
 .ListItems{
   overflow: auto;
   width: 100%;
   height: 100%;
 }
+.ListTitle{
+  /*border-radius: 20px 20px 0% 0%;*/
+  width: 100%;
+  overflow: hidden;
+}
 .NoItems{
   text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.ListInput{
+  border-bottom: 1px solid black;
 }
 </style>

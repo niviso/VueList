@@ -1,5 +1,5 @@
 <template>
-  <div id="tacos">
+  <div id="myView">
     <List scheme='red'></List>
   </div>
 </template>
@@ -20,9 +20,12 @@ export default {
 </script>
 
 <style>
-#tacos {
-
+#myView {
   width: 100%;
   height: 100%;
+  background: green;
+  position: absolute;
+  top:0%;
+  left:0%;
 }
 </style>
