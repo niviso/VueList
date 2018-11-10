@@ -1,9 +1,9 @@
 <template>
   <div class="List">
-    <Input :onSubmit="setTitle" :submitOnBlur="false" :data="title" :clearOnSubmit="false" :align="left"></Input>
-  <Input :onSubmit="additem" :submitOnBlur="false" :clearOnSubmit="true" :align="center"></Input>
+    <Input :onSubmit="setTitle" :submitOnBlur="false" :data="title" :clearOnSubmit="false"></Input>
+  <Input :onSubmit="additem" :submitOnBlur="false" :clearOnSubmit="true"></Input>
   <div v-for="(item, index) in items">
-        <ListItem v-bind:item="item"></ListItem>
+        <ListItem v-bind:item="item" :removeItem="removeItem"></ListItem>
   </div>
   <div v-if="items.length == 0" class="NoItems">No Items</div>
   </div>
@@ -34,11 +34,16 @@ export default {
     this.fetchData();
   },
   methods: {
-      additem (item) {
-        this.items.push(item);
+      additem (txt) {
+        let newItem = {txt: txt, key: Date.now()}
+        this.items.push(newItem);
         this.save();
       },
-      removeItem(item){
+      removeItem(key){
+        this.items = this.items.filter(function (item) {
+          return (item.key !== key);
+        });
+        this.save();
 
       },
       setTitle(title){
@@ -70,8 +75,6 @@ export default {
   width: 100%;
   max-width: 700px;
   height: 100%;
-  max-height: 600px;
-  border: 1px solid black;
   overflow: hidden;
 }
 .NoItems{

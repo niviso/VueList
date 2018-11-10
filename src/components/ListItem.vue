@@ -1,18 +1,26 @@
 <template>
   <div class="ListItem">
-    {{item}}
+    <div class="listItemTxt">
+    {{item.txt}}
+  </div>
+    <div class="ListItemRemove" v-on:click="remove"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'ListItem',
-  props: {item: String},
+  props: {item: Object,
+  removeItem: Function},
   data () {
     return {
     }
   },
   methods: {
+
+    remove(){
+      this.removeItem(this.item.key)
+    }
   }
 }
 </script>
@@ -22,7 +30,27 @@ export default {
 .ListItem
 {
   width: 100%;
-  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.listItemTxt{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
+}
+
+.ListItemRemove{
+  width: 2em;
+  height: 2em;
+  background: red;
+  border-left: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

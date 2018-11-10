@@ -1,7 +1,8 @@
 <template>
 <div class="InputWrapper">
 <input type="text" class="Input"
-  v-model="data"
+
+  v-model="value"
   contentEditable="true"
   @focus="onFocus"
   @blur="onBlur"
@@ -17,23 +18,25 @@ export default {
     onSubmit: Function,
     submitOnBlur: Boolean,
     data: String,
-    align: String,
     clearOnSubmit: Boolean
   },
     data () {
     return {
       input: "",
       Focus: true,
-      align: "center"
+      value: this.data
     }
   },
 
   methods: {
     submit(e) {
       e.preventDefault();
-      this.onSubmit(this.data);
+      this.onSubmit(this.value);
+      this.clearInput();
+    },
+    clearInput(){
       if(this.clearOnSubmit){
-        this.input = "";
+        this.value = "";
       }
     },
     onFocus() {
@@ -56,7 +59,7 @@ export default {
   outline: 0;
   font-size: inherit;
   background: none;
-  text-align: {{align}};
   padding: 10px;
+  border-bottom: 1px solid black;
 }
 </style>
