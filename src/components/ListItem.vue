@@ -19,7 +19,7 @@ export default {
   methods: {
 
     remove(){
-      this.removeItem(this.item.key)
+      this.removeItem(this.item)
     }
   }
 }

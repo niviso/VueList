@@ -27,7 +27,8 @@ export default {
       colorPrimary: "red",
       colorSecondary: "blue",
       items: [],
-      title: "My List"
+      title: "My List",
+      history: []
     }
   },
   created: function(){
@@ -39,10 +40,13 @@ export default {
         this.items.push(newItem);
         this.save();
       },
-      removeItem(key){
+      removeItem(removeItem){
         this.items = this.items.filter(function (item) {
-          return (item.key !== key);
+          return (item !== removeItem);
         });
+        if(this.history.indexOf(removeItem) === -1){
+          this.history.push(removeItem);
+        }
         this.save();
 
       },
@@ -52,7 +56,7 @@ export default {
 
       },
       generateListObj(){
-        return JSON.stringify({title: this.title, items:this.items});
+        return JSON.stringify({title: this.title, items:this.items},history: this.history);
       },
       save(){
         LocalStorageHelper.setStorage(this.generateListObj(),"list_" + this.id);
@@ -62,7 +66,8 @@ export default {
         let data = JSON.parse(LocalStorageHelper.getStorage("list_" + this.id));
         if(data){
           this.items = data.items || [];
-          this.title = data.title || 'My List';
+          this.title = data.title || 'My List',
+          this.history = data.history || []
         }
       }
     }
