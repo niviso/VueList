@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
     <div class="List" v-touch:swipe.up="openMenu">
-      <List v-if="!toggleMenu" :id="selectedListId" :data="DataManager.lists[selectedListId]" scheme='red'></List>
+      <List v-if="!toggleMenu" :id="selectedListId" :data="DataManager.listData[selectedListId]" scheme='red'></List>
   </div>
   <div class="menu" v-touch:swipe.down="closeMenu" v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
     <img src="../assets/logo.png" alt=" http://www.freepik.com" class="logo" style="margin-bottom: 25px">
     <div class="menu-items-wrapper">
-    <div v-for="(item, index) in DataManager.lists" @click="select(index)">
-      {{item.title}}
+    <div v-for="(item, index) in DataManager.lists" @click="select(item)">
+      {{DataManager.listData[item].title}}
       </div>
     </div>
   </div>

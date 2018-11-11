@@ -76,6 +76,7 @@ export default {
       },
       save(){
         LocalStorageHelper.setStorage(this.generateListObj(),"list_" + this.id);
+        console.log(this.generateListObj());
         console.log("Saving...");
       },
       fetchData(){

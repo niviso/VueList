@@ -2,6 +2,7 @@ import LocalStorageHelper from "../helpers/LocalStorageHelper";
 
 const DataManager = {
     lists: [],
+    listData: [],
     getLists: function(){
       let result = LocalStorageHelper.getStorage("catlist");
       if(!result){
@@ -10,10 +11,10 @@ const DataManager = {
         this.lists = result;
         let parsedLists = [];
         for(var list of this.lists){
-          parsedLists.push(LocalStorageHelper.getStorage("list_" + list));
+          parsedLists[list] = LocalStorageHelper.getStorage("list_" + list);
         }
-        this.lists = parsedLists;
-        console.log(this.lists);
+        this.listData = parsedLists;
+        console.log(this.listData);
       }
     },
 
