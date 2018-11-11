@@ -1,6 +1,6 @@
 const LocalStorageHelper = {
     getStorage: function(keyName){
-      return localStorage.getItem(keyName);
+      return JSON.parse(localStorage.getItem(keyName));
     },
     setStorage: function(data,keyName){
       localStorage.setItem(keyName, data);

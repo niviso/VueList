@@ -27,7 +27,8 @@ export default {
   name: 'List',
   props: {
     scheme : String,
-    id: Number
+    id: Number,
+    data: Object
   },
     components: {
     ListItem,
@@ -43,7 +44,11 @@ export default {
     }
   },
   created: function(){
-    this.fetchData();
+    if(this.data){
+      this.items = this.data.items || [];
+      this.title = this.data.title || 'My List',
+      this.history = this.data.history || []
+    }
   },
   methods: {
       additem (txt) {
@@ -74,7 +79,7 @@ export default {
         console.log("Saving...");
       },
       fetchData(){
-        let data = JSON.parse(LocalStorageHelper.getStorage("list_" + this.id));
+        let data = LocalStorageHelper.getStorage("list_" + this.id);
         if(data){
           this.items = data.items || [];
           this.title = data.title || 'My List',
