@@ -26,7 +26,6 @@ import LocalStorageHelper from '../helpers/LocalStorageHelper';
 export default {
   name: 'List',
   props: {
-    scheme : String,
     id: Number,
     data: Object
   },
@@ -39,16 +38,21 @@ export default {
       items: [],
       title: "My List",
       history: [],
-      ColorScheme: ColorScheme[this.scheme],
+      scheme: "red",
+      ColorScheme: ColorScheme['red'],
       Sizes: Sizes
     }
   },
-  created: function(){
+  beforeCreate: function(){
     if(this.data){
       this.items = this.data.items || [];
-      this.title = this.data.title || 'My List',
-      this.history = this.data.history || []
+      this.title = this.data.title || 'My List';
+      this.history = this.data.history || [];
+      this.scheme = this.data.scheme || 'default'
     }
+    console.log(this.data);
+
+    //this.ColorScheme = ColorScheme[this.scheme];
   },
   methods: {
       additem (txt) {
@@ -72,7 +76,7 @@ export default {
 
       },
       generateListObj(){
-        return JSON.stringify({title: this.title, items:this.items,history: this.history});
+        return JSON.stringify({title: this.title,scheme: this.scheme, items:this.items,history: this.history});
       },
       save(){
         LocalStorageHelper.setStorage(this.generateListObj(),"list_" + this.id);
