@@ -5,8 +5,9 @@
   </div>
   <div class="menu" v-touch:swipe.down="closeMenu" v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
     <img src="../assets/logo.png" alt=" http://www.freepik.com" class="logo" style="margin-bottom: 25px">
+    Select a list
     <div class="menu-items-wrapper">
-    <div v-for="(item, index) in DataManager.lists" @click="select(item)">
+    <div v-for="(item, index) in DataManager.lists" @click="select(item)" class="menu-item">
       {{DataManager.listData[item].title}}
       </div>
     </div>
@@ -75,8 +76,13 @@ export default {
   flex-direction: column;
 }
 .menu-items-wrapper{
-  font-size: 3em;
+  font-size: 2em;
   height: 100%;
+  width: 100%;
+}
+.menu-item{
+  padding: 10px;
+  border-bottom: 1px solid black;
 }
 .logo{
   padding: 10px;
