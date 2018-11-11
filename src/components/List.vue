@@ -5,7 +5,7 @@
     <div class="ListTitleIcon"><img height="100%" src="https://png.pngtree.com/svg/20170217/nav_burger_897433.png"></div>
   <Input style="font-weight: bold" fontSize="l" :onSubmit="setTitle" txtAlign="left" size="l" :submitOnBlur="true" :data="title" :clearOnSubmit="false" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.fontColor"></Input>
 </div>
-  <Input fontSize="s" fontSizeOnFocus="l" :autoFocus="true" class="ListInput" :autoComplete="history" :onSubmit="additem" size="l" :submitOnBlur="false" :clearOnSubmit="true" txtAlign="center" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.white"></Input>
+  <Input fontSize="s" placeholder="New task" fontSizeOnFocus="l" :autoFocus="true" class="ListInput" :autoComplete="history" :onSubmit="additem" size="l" :submitOnBlur="false" :clearOnSubmit="true" txtAlign="center" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.white"></Input>
 <div class="ListItems">
   <div v-for="(item, index) in items">
         <ListItem size="m" v-bind:item="item" :removeItem="removeItem" :evenorodd="index%2" :scheme="scheme"></ListItem>

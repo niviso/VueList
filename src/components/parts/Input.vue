@@ -9,7 +9,7 @@ v-bind:style="{ backgroundColor: bgColor, color: fontColor, textAlign: txtAlign}
   contentEditable="true"
   @focus="onFocus"
   @blur="onBlur"
-  placeholder="New task"
+  :placeholder="placeholder"
   v-on:keydown="keyPress"
   v-on:keypress.13="submit">
 
@@ -36,7 +36,8 @@ export default {
     onKeyPress: Function,
     autoComplete: Array,
     autoFocus: Boolean,
-    fontSizeOnFocus: String
+    fontSizeOnFocus: String,
+    placeholder: String
   },
     data () {
     return {
@@ -96,11 +97,11 @@ export default {
 
     },
     onBlur(e){
-      if(this.fontSizeOnFocus && !this.autoCompleteResult){
-        this.myFontSize = this.fontSize;
-      }
       if(this.submitOnBlur){
         this.submit(e);
+      }
+      if(this.fontSizeOnFocus && !this.autoCompleteResult){
+        this.myFontSize = this.fontSize;
       }
 
     }
@@ -141,6 +142,7 @@ export default {
   align-items: center;
   justify-content: center;
   border-top: 2px solid white;
+  z-index: 1;
 }
 .Input::placeholder{
   color: inherit;

@@ -5,7 +5,7 @@
 
     <div class="listItemTxt">
       <div class="txt">{{item.txt}}</div>
-      <div class="txtDate" style="font-size: 0.5em">{{moment(item.key).fromNow(true)}} by <b>Nikki</b></div>
+      <div class="txtDate" style="font-size: 0.5em">{{moment(item.key).fromNow(true)}} by <b>{{UserManager.name}}</b></div>
     </div>
   </div>
 </template>
@@ -13,6 +13,8 @@
 <script>
 import ColorScheme from '../helpers/ColorScheme';
 import Sizes from '../helpers/Sizes';
+import UserManager from '../managers/UserManager';
+
 import moment from 'moment';
 
 export default {
@@ -30,6 +32,7 @@ export default {
   data () {
     return {
       ColorScheme: ColorScheme[this.scheme],
+      UserManager: UserManager,
       Sizes: Sizes,
       moment: moment,
       deleting: false
