@@ -1,15 +1,25 @@
 <template>
   <div id="myView">
     <div class="wrapper">
-      <img src="https://zalarieunique.ru/images/clipart-png-eagle-17.png" class="logo">
-            <p style="font-size: 5em">Brave</p>
-            <p style="font-size: 1em;border-top:1px solid rgba(0,0,0,0.2);padding: 10px">Create a new user</p>
 
-      <div class="content">
-        <Input size="l" fontSize="m" placeholder="Username" txtAlign="center" bgColor="white" fontColor="black" fontSizeOnFocus="l"  :onSubmit="setProfile"></Input>
-        <Input size="l" fontSize="m" placeholder="Password" txtAlign="center" bgColor="white" fontColor="black" fontSizeOnFocus="l"></Input>
-        <div class="goWrapper">
+      <div class="content" :style="{ display: (stage == 1 ? 'flex' : 'none')}" @click="stage = 2">
+        <div style="font-size: 3em;padding: 10px;"><b>Catlist</b></div>
+
+        <img src="../assets/logo.png" alt=" http://www.freepik.com" class="logo pulse">
+        <div style="font-size: 1em;padding: 10px;margin-top: 50px;opacity: 0.4">Click anywhere to continue</div>
+
       </div>
+      <div class="content" :style="{ display: (stage == 2 ? 'flex' : 'none')}" @click="stage = 3">
+        <div class="text">
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      </div>
+    </div>
+      <div class="content" :style="{ display: (stage == 3 ? 'flex' : 'none')}">
+        <img src="../assets/logo.png" alt=" http://www.freepik.com" class="logo" style="margin-bottom: 25px">
+
+        <Input size="l" fontSize="m" placeholder="Username" txtAlign="center" bgColor="white" fontColor="black" fontSizeOnFocus="l"  :submitOnBlur="true" :onSubmit="setName"></Input>
+        <Input size="l" type="password" fontSize="m" placeholder="Password" txtAlign="center" bgColor="white" fontColor="black" fontSizeOnFocus="l" :submitOnBlur="true" :onSubmit="setPassword"></Input>
+        <div style="width: 100%; padding: 10px;text-align:center; background: black;color:white;margin-bottom: 100px" @click="test">Create a new user</div>
       </div>
     </div>
   </div>
@@ -27,6 +37,7 @@ export default {
   data () {
     return {
       color: "red",
+      stage: 3,
       UserManager: UserManager
     }
   },
@@ -34,9 +45,16 @@ export default {
 
   },
   methods:{
-  setProfile(name){
-    this.UserManager.name =name;
-    window.location = "/#/"
+  setName(userName){
+    this.UserManager.userName = userName;
+  },
+  setPassword(password){
+    this.UserManager.password = password;
+  },
+  test(){
+    if(this.UserManager.userName && this.UserManager.password){
+    window.location = "/#/";
+    }
   }
   }
 }
@@ -58,17 +76,24 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
-  animation: fadeIn 1s ease;
   flex-direction: column;
 }
 
 .content{
   margin-top: 10px;
-  animation: fadeInX 2s ease-out;
+  animation: fadeIn 2s ease-out;
   overflow: hidden;
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
+}
+
+.text{
+  width: 75%;
 }
 .go{
   width: 10em;
@@ -92,6 +117,11 @@ export default {
   padding: 10px;
 }
 
+.pulse{
+  animation: pulse 1.5s infinite ease;
+
+}
+
 @keyframes fadeIn{
   from{
     opacity: 0;
@@ -101,12 +131,15 @@ export default {
   }
 }
 
-@keyframes fadeInX{
-  from{
-    height: 0;
+@keyframes pulse{
+  0%{
+    transform:scale(1,1)
   }
-  to{
-    height: 100%;
+  50%{
+    transform:scale(1.3,1.3)
+  }
+  100%{
+    transform:scale(1,1)
   }
 }
 </style>

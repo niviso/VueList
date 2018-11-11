@@ -1,5 +1,6 @@
 const UserManager = {
-    name: "Nikki",
+    userName: "Nikki",
+    password: "",
     scheme: "red"
 }
 

@@ -5,7 +5,7 @@
 
     <div class="listItemTxt">
       <div class="txt">{{item.txt}}</div>
-      <div class="txtDate" style="font-size: 0.5em">{{moment(item.key).fromNow(true)}} by <b>{{UserManager.name}}</b></div>
+      <div class="txtDate" style="font-size: 0.5em">{{moment(item.key).fromNow(true)}} by <b>{{UserManager.userName}}</b></div>
     </div>
   </div>
 </template>

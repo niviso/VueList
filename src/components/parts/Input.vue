@@ -2,7 +2,7 @@
 <div class="InputWrapper"
 v-bind:style="{ backgroundColor: bgColor, color: fontColor, fontSize: Sizes[myFontSize], height: Sizes[size]}">
 
-<input type="text" class="Input"
+<input :type="myType" class="Input"
 v-bind:style="{ backgroundColor: bgColor, color: fontColor, textAlign: txtAlign}"
   v-bind:autofocus="autoFocus"
   v-model="value"
@@ -37,7 +37,8 @@ export default {
     autoComplete: Array,
     autoFocus: Boolean,
     fontSizeOnFocus: String,
-    placeholder: String
+    placeholder: String,
+    type: String
   },
     data () {
     return {
@@ -47,7 +48,8 @@ export default {
       mySize: this.size || 'm',
       Sizes: Sizes,
       autoCompleteResult: null,
-      myFontSize: this.fontSize
+      myFontSize: this.fontSize,
+      myType: this.type || "text"
 
     }
   },
