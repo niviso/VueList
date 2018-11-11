@@ -43,16 +43,13 @@ export default {
       Sizes: Sizes
     }
   },
-  beforeCreate: function(){
+  created: function(){
     if(this.data){
       this.items = this.data.items || [];
       this.title = this.data.title || 'My List';
       this.history = this.data.history || [];
-      this.scheme = this.data.scheme || 'default'
+      this.scheme = this.data.scheme || 'default';
     }
-    console.log(this.data);
-
-    //this.ColorScheme = ColorScheme[this.scheme];
   },
   methods: {
       additem (txt) {

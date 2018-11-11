@@ -35,7 +35,7 @@ const DataManager = {
 
       listObj = this.generateDefaultList(id);
       this.lists.push(id);
-      this.listData.push(listObj);
+      this.listData[id] = listObj;
       LocalStorageHelper.setStorage(JSON.stringify(this.lists),"catlist");
       LocalStorageHelper.setStorage(JSON.stringify(listObj),"list_"+id);
     },
