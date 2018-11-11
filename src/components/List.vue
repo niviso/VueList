@@ -94,14 +94,14 @@ export default {
   height: 100%;
   overflow-x: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 .ListItems{
   overflow: auto;
+  overflow-x: hidden;
   width: 100%;
   height: 100%;
+
 }
 .ListTitle{
   width: 100%;

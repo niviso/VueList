@@ -96,7 +96,7 @@ export default {
 
     },
     onBlur(e){
-      if(this.fontSizeOnFocus){
+      if(this.fontSizeOnFocus && !this.autoCompleteResult){
         this.myFontSize = this.fontSize;
       }
       if(this.submitOnBlur){

@@ -1,5 +1,5 @@
 <template>
-  <div class="ListItem" v-on:click="remove" ref="myItem"
+  <div class="ListItem" v-on:click="remove" ref="ListItem"
   v-bind:style="{ backgroundColor:  (parseInt(evenorodd) ? ColorScheme.primary : ColorScheme.white), color: ColorScheme.black, fontSize: Sizes[size], height: Sizes[size]}">
   <!-- <div class="ListItemRemove" v-on:click="remove" v-bind:style="{ backgroundColor: (parseInt(evenorodd) ? ColorScheme.secondary : ColorScheme.primary)}"></div> -->
 
@@ -32,21 +32,15 @@ export default {
       ColorScheme: ColorScheme[this.scheme],
       Sizes: Sizes,
       moment: moment,
-      myItem: null
+      deleting: false
     }
   },
   created(){
 
   },
   methods: {
-
     remove(){
-
-      this.$refs.myItem.style.opacity = "0";
-      return;
-      setTimeout(() =>{
-      this.removeItem(this.item);
-    },250);
+    this.removeItem(this.item);
     }
   }
 }
@@ -57,12 +51,10 @@ export default {
 .ListItem
 {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   animation: fadeIn 0.25s ease;
-  padding: 10px;
   position: relative;
+    padding: 10px;
+    overflow: hidden;
 }
 .listItemTxt{
   height: 100%;
@@ -76,6 +68,7 @@ export default {
   white-space: nowrap;
   width: 100%;
   overflow: hidden;
+
 }
 .txtDate{
   text-align: right;
@@ -86,6 +79,20 @@ export default {
   height: 100%;
   width: 25%;
   border-right: 1px solid black
+}
+
+.remove{
+  background: red!important;
+  animation: fadeOut 0.25s ease;
+
+}
+@keyframes fadeOut{
+  from{
+    width: 100%
+  }
+  to{
+    width: 0px
+  }
 }
 
 @keyframes fadeIn{
