@@ -5,18 +5,16 @@
 </template>
 
 <script>
-import LocalStorageHelper from "./helpers/LocalStorageHelper";
+import DataManager from "./managers/DataManager";
 export default {
   name: 'App',
   data () {
     return {
-      LocalStorageHelper: LocalStorageHelper
+      DataManager: DataManager
     }
   },
   created(){
-    if(this.LocalStorageHelper.getStorage("CatList") == null) {
-      window.location ="/#/new";
-    }
+    this.DataManager.getLists();
 
   }
 }

@@ -6,7 +6,7 @@
         <div style="font-size: 3em;padding: 10px;"><b>Catlist</b></div>
 
         <img src="../assets/logo.png" alt=" http://www.freepik.com" class="logo pulse">
-        <div style="font-size: 1em;padding: 10px;margin-top: 50px;opacity: 0.4">Click anywhere to continue</div>
+        <div style="font-size: 1em;padding: 10px;margin-top: 50px;opacity: 0.4"><b>Paw anywhere to continue</b></div>
 
       </div>
       <div class="content" :style="{ display: (stage == 2 ? 'flex' : 'none')}" @click="stage = 3">
@@ -19,7 +19,7 @@
 
         <Input size="l" fontSize="m" placeholder="Username" txtAlign="center" bgColor="white" fontColor="black" fontSizeOnFocus="l"  :submitOnBlur="true" :onSubmit="setName"></Input>
         <Input size="l" type="password" fontSize="m" placeholder="Password" txtAlign="center" bgColor="white" fontColor="black" fontSizeOnFocus="l" :submitOnBlur="true" :onSubmit="setPassword"></Input>
-        <div style="width: 100%; padding: 10px;text-align:center; background: black;color:white;margin-bottom: 100px" @click="test">Create a new user</div>
+        <div style="width: 100%; padding: 10px;text-align:center; background: black;color:white;margin-bottom: 100px;font-size: 1em" @click="test">Create a new user</div>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@ export default {
   data () {
     return {
       color: "red",
-      stage: 3,
+      stage: 1,
       UserManager: UserManager
     }
   },
@@ -52,9 +52,12 @@ export default {
     this.UserManager.password = password;
   },
   test(){
-    if(this.UserManager.userName && this.UserManager.password){
-    window.location = "/#/";
+    if(!this.UserManager.userName){
     }
+    else if(!this.UserManager.password){
+
+    }
+    window.location = "/#/";
   }
   }
 }
@@ -118,7 +121,7 @@ export default {
 }
 
 .pulse{
-  animation: pulse 1.5s infinite ease;
+  animation: pulse 3s infinite ease;
 
 }
 
@@ -133,13 +136,15 @@ export default {
 
 @keyframes pulse{
   0%{
-    transform:scale(1,1)
+    transform: rotate(-5deg);
   }
   50%{
-    transform:scale(1.3,1.3)
+    transform: rotate(5deg) scale(1.1,1.1);
+
   }
   100%{
-    transform:scale(1,1)
+    transform: rotate(-5deg);
+
   }
 }
 </style>

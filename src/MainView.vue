@@ -6,8 +6,6 @@
 
 <script>
 import List from '../components/List';
-import DataManager from "../managers/DataManager";
-
 export default {
   name: 'MainView',
   components: {
@@ -15,8 +13,7 @@ export default {
   },
   data () {
     return {
-      color: "red",
-      DataManager: DataManager
+      color: "red"
     }
   },
   created(){

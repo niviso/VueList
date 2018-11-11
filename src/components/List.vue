@@ -27,7 +27,8 @@ import LocalStorageHelper from '../helpers/LocalStorageHelper';
 export default {
   name: 'List',
   props: {
-    scheme : String
+    scheme : String,
+    id: Number
   },
     components: {
     ListItem,
@@ -35,7 +36,6 @@ export default {
   },
   data () {
     return {
-      id: 1,
       items: [],
       title: "My List",
       history: [],
