@@ -5,8 +5,20 @@
 </template>
 
 <script>
+import LocalStorageHelper from "./helpers/LocalStorageHelper";
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      LocalStorageHelper: LocalStorageHelper
+    }
+  },
+  created(){
+    if(this.LocalStorageHelper.getStorage("CatList") == null) {
+      window.location ="/#/new";
+    }
+
+  }
 }
 </script>
 

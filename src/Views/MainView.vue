@@ -15,6 +15,9 @@ export default {
     return {
       color: "red"
     }
+  },
+  created(){
+
   }
 }
 </script>
