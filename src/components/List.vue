@@ -1,10 +1,11 @@
 <template>
   <div class="List"
   v-bind:style="{ backgroundColor: ColorScheme.backgroundColor, color: ColorScheme.fontColor }">
-  <div class="ListTitle">
-  <Input fontSize="l" :onSubmit="setTitle" txtAlign="left" size="l" :submitOnBlur="true" :data="title" :clearOnSubmit="false" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.fontColor"></Input>
+  <div class="ListTitle" v-bind:style="{ backgroundColor: ColorScheme.primary, color: ColorScheme.fontColor }">
+    <div class="ListTitleIcon"><img height="100%" src="https://png.pngtree.com/svg/20170217/nav_burger_897433.png"></div>
+  <Input style="font-weight: bold" fontSize="l" :onSubmit="setTitle" txtAlign="left" size="l" :submitOnBlur="true" :data="title" :clearOnSubmit="false" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.fontColor"></Input>
 </div>
-  <Input fontSize="l" :autoFocus="true" class="ListInput" :autoComplete="history" :onSubmit="additem" size="l" :submitOnBlur="false" :clearOnSubmit="true" txtAlign="center" :bgColor="ColorScheme.white" :fontColor="ColorScheme.black"></Input>
+  <Input fontSize="s" fontSizeOnFocus="l" :autoFocus="true" class="ListInput" :autoComplete="history" :onSubmit="additem" size="l" :submitOnBlur="false" :clearOnSubmit="true" txtAlign="center" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.white"></Input>
 <div class="ListItems">
   <div v-for="(item, index) in items">
         <ListItem size="m" v-bind:item="item" :removeItem="removeItem" :evenorodd="index%2" :scheme="scheme"></ListItem>
@@ -96,7 +97,6 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 10px;
 }
 .ListItems{
   overflow: auto;
@@ -104,9 +104,20 @@ export default {
   height: 100%;
 }
 .ListTitle{
-  /*border-radius: 20px 20px 0% 0%;*/
   width: 100%;
   overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+.ListTitleIcon{
+  height: 2em;
+  width: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .NoItems{
   text-align: center;

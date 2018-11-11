@@ -1,6 +1,6 @@
 <template>
 <div class="InputWrapper"
-v-bind:style="{ backgroundColor: bgColor, color: fontColor, fontSize: Sizes[fontSize], height: Sizes[size]}">
+v-bind:style="{ backgroundColor: bgColor, color: fontColor, fontSize: Sizes[myFontSize], height: Sizes[size]}">
 
 <input type="text" class="Input"
 v-bind:style="{ backgroundColor: bgColor, color: fontColor, textAlign: txtAlign}"
@@ -9,13 +9,13 @@ v-bind:style="{ backgroundColor: bgColor, color: fontColor, textAlign: txtAlign}
   contentEditable="true"
   @focus="onFocus"
   @blur="onBlur"
-  placeholder="Input task"
+  placeholder="New task"
   v-on:keydown="keyPress"
   v-on:keypress.13="submit">
 
   <div v-if="autoCompleteResult" class="autoComplete" @click="autoCompleteSubmit"
   v-bind:style="{ backgroundColor: bgColor, color: fontColor, textAlign: txtAlign, top: '100%', height: Sizes[size]}">
-  Did you mean {{autoCompleteResult.txt}}?</div>
+  Did you mean &nbsp;<b>'{{autoCompleteResult.txt}}'</b></div>
 </div>
 </template>
 
@@ -35,7 +35,8 @@ export default {
     txtAlign: String,
     onKeyPress: Function,
     autoComplete: Array,
-    autoFocus: Boolean
+    autoFocus: Boolean,
+    fontSizeOnFocus: String
   },
     data () {
     return {
@@ -44,7 +45,8 @@ export default {
       value: this.data,
       mySize: this.size || 'm',
       Sizes: Sizes,
-      autoCompleteResult: null
+      autoCompleteResult: null,
+      myFontSize: this.fontSize
 
     }
   },
@@ -88,9 +90,15 @@ export default {
       }
     },
     onFocus() {
+      if(this.fontSizeOnFocus){
+        this.myFontSize = this.fontSizeOnFocus;
+      }
 
     },
     onBlur(e){
+      if(this.fontSizeOnFocus){
+        this.myFontSize = this.fontSize;
+      }
       if(this.submitOnBlur){
         this.submit(e);
       }
@@ -132,7 +140,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.8;
+  border-top: 2px solid white;
 }
 .Input::placeholder{
   color: inherit;

@@ -1,15 +1,20 @@
 <template>
-  <div class="ListItem" v-on:click="remove"
-  v-bind:style="{ backgroundColor:  (parseInt(evenorodd) ? ColorScheme.white : ColorScheme.primary), color: ColorScheme.black, fontSize: Sizes[size], height: Sizes[size]}">
+  <div class="ListItem" v-on:click="remove" ref="myItem"
+  v-bind:style="{ backgroundColor:  (parseInt(evenorodd) ? ColorScheme.primary : ColorScheme.white), color: ColorScheme.black, fontSize: Sizes[size], height: Sizes[size]}">
   <!-- <div class="ListItemRemove" v-on:click="remove" v-bind:style="{ backgroundColor: (parseInt(evenorodd) ? ColorScheme.secondary : ColorScheme.primary)}"></div> -->
 
-    <div class="listItemTxt">{{item.txt}}</div>
+    <div class="listItemTxt">
+      <div class="txt">{{item.txt}}</div>
+      <div class="txtDate" style="font-size: 0.5em">{{moment(item.key).fromNow(true)}} by <b>Nikki</b></div>
+    </div>
   </div>
 </template>
 
 <script>
 import ColorScheme from '../helpers/ColorScheme';
 import Sizes from '../helpers/Sizes';
+import moment from 'moment';
+
 export default {
   name: 'ListItem',
   props: {item: Object,
@@ -19,16 +24,29 @@ export default {
   evenorodd: Number
 
   },
+  components:{
+    moment
+  },
   data () {
     return {
       ColorScheme: ColorScheme[this.scheme],
-      Sizes: Sizes
+      Sizes: Sizes,
+      moment: moment,
+      myItem: null
     }
+  },
+  created(){
+
   },
   methods: {
 
     remove(){
-      this.removeItem(this.item)
+
+      this.$refs.myItem.style.opacity = "0";
+      return;
+      setTimeout(() =>{
+      this.removeItem(this.item);
+    },250);
     }
   }
 }
@@ -44,13 +62,24 @@ export default {
   align-items: center;
   animation: fadeIn 0.25s ease;
   padding: 10px;
+  position: relative;
 }
 .listItemTxt{
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: space-between;
+  width: 95%;
+}
+.txt{
+  text-overflow: ellipsis;
+  white-space: nowrap;
   width: 100%;
+  overflow: hidden;
+}
+.txtDate{
+  text-align: right;
+  width: 50%;
 }
 
 .ListItemRemove{
@@ -61,10 +90,10 @@ export default {
 
 @keyframes fadeIn{
   from{
-    opacity: 0
+    width: 0px
   }
   to{
-    opacity: 1
+    width: 100%
   }
 }
 </style>

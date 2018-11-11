@@ -1,8 +1,8 @@
 const ColorScheme = {
   "red": {
-    primary: "#5BC0EB",
+    primary: "#637EE0",
     secondary: "#BC3908",
-    backgroundColor: "#FA7921",
+    backgroundColor: "#F5F5F6",
     white: "white",
     black: "black",
     fontColor: "black"
@@ -12,7 +12,7 @@ const ColorScheme = {
     secondary: "#FF5733",
     white: "white",
     black: "black",
-    fontColor: "black"
+    fontColor: "white"
   }
 }
 export default ColorScheme;
