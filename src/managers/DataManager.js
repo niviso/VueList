@@ -19,7 +19,7 @@ const DataManager = {
     },
     generateDefaultList: function(id){
       return {
-        title: "New list" + id,
+        title: "New list no." + id,
         items: [],
         history: [],
         scheme: "default"

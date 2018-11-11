@@ -6,6 +6,7 @@
   <div class="menu" v-touch:swipe.down="closeMenu" v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
     <img src="../assets/logo.png" alt=" http://www.freepik.com" class="logo" style="margin-bottom: 25px">
     Select a list
+    <div @click="newList">add list</div>
     <div class="menu-items-wrapper">
     <div v-for="(item, index) in DataManager.lists" @click="select(item)" class="menu-item">
       {{DataManager.listData[item].title}}
@@ -46,6 +47,9 @@ export default {
     select(id){
       this.selectedListId = id;
       this.closeMenu();
+    },
+    newList(){
+      this.DataManager.createList();
     }
   },
   created(){
