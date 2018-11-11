@@ -73,7 +73,7 @@ export default {
 
       },
       generateListObj(){
-        return JSON.stringify({title: this.title,scheme: this.scheme, items:this.items,history: this.history});
+        return JSON.stringify({title: this.title,scheme: "default", items:this.items,history: this.history});
       },
       save(){
         LocalStorageHelper.setStorage(this.generateListObj(),"list_" + this.id);

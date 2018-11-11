@@ -13,6 +13,13 @@ const ColorScheme = {
     white: "white",
     black: "black",
     fontColor: "white"
+  },
+  "default": {
+    primary: "#637EE0",
+    secondary: "#FF5733",
+    white: "white",
+    black: "black",
+    fontColor: "white"
   }
 }
 export default ColorScheme;
