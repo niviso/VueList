@@ -28,6 +28,7 @@
 <script>
 import Input from '../components/parts/Input';
 import UserManager from '../managers/UserManager';
+import DataManager from '../managers/DataManager';
 
 export default {
   name: 'NewProfile',
@@ -38,7 +39,8 @@ export default {
     return {
       color: "red",
       stage: 1,
-      UserManager: UserManager
+      UserManager: UserManager,
+      DataManager : DataManager
     }
   },
   created(){
@@ -57,6 +59,8 @@ export default {
     else if(!this.UserManager.password){
 
     }
+    this.DataManager.createList();
+
     window.location = "/#/";
   }
   }

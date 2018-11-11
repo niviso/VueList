@@ -17,8 +17,29 @@ const DataManager = {
         console.log(this.listData);
       }
     },
-
+    generateDefaultList: function(id){
+      return {
+        title: "New list" + id,
+        items: [],
+        history: [],
+        scheme: "default"
+      }
+    },
     createList: function(){
+      let id = 0;
+      let listObj = null;
+
+      if(this.lists){
+        id = this.lists.length;
+      }
+
+      listObj = this.generateDefaultList(id);
+      this.lists.push(id);
+      this.listData.push(listObj);
+      LocalStorageHelper.setStorage(JSON.stringify(this.lists),"catlist");
+      LocalStorageHelper.setStorage(JSON.stringify(listObj),"list_"+id);
+    },
+    saveList: function(){
 
     }
 
