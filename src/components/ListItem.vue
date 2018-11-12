@@ -82,7 +82,6 @@ export default {
 .ListItemRemove{
   height: 100%;
   width: 25%;
-  border-right: 1px solid black
 }
 
 .remove{

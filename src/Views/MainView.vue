@@ -4,7 +4,7 @@
       <List v-if="!toggleMenu && DataManager.listData[selectedListId]" :id="selectedListId" :data="DataManager.listData[selectedListId]" scheme='red'></List>
   </div>
   <div class="menu" v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
-    <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;border-top:2px solid white; display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
+    <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;  display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
       <p class="pulse">VUE<br>LIST</p>
     </div>
     <div @click="newList" style="font-size: 1em;padding: 10px;width: 100%;height:5em;border:1px solid #3d3d3d; display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
@@ -53,10 +53,8 @@ export default {
       this.toggleMenu = false;
     },
     select(id){
-      if(this.toggleDeleteTarget){
-        return;
-      }
       this.selectedListId = id;
+      this.toggleDeleteTarget = null;
       this.closeMenu();
     },
     newList(){
@@ -90,7 +88,6 @@ export default {
   width: 100%;
 }
 .menu{
-
   position: absolute;
   top:0%;
   left:0%;
@@ -124,7 +121,6 @@ export default {
 .menu-item-inner{
   padding: 10px;
     transition: 0.25s all ease-in-out;
-  border-bottom: 1px solid #3d3d3d;
   font-weight: lighter;
   text-align: center;
   font-size: 1em;
@@ -134,7 +130,7 @@ export default {
 .menu-item-delete{
       width: 0%;
       transition:0.25s all ease-in-out;
-      background: red;
+      background: #AA3F44;
       font-size: 0.5em;
       display: flex;
       align-items: center;
@@ -145,7 +141,6 @@ export default {
 }
 .logo{
   padding: 10px;
-  border-bottom: 1px solid black;
 }
 .wrapper {
   width: 100%;

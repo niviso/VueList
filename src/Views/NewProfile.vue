@@ -107,7 +107,6 @@ export default {
 .go{
   width: 10em;
   height: 10em;
-  border: 1px solid black;
   border-radius: 100%;
   display: flex;
   justify-content: center;

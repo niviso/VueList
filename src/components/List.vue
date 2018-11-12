@@ -1,9 +1,9 @@
 <template>
   <div class="List"
   v-bind:style="{ backgroundColor: ColorScheme.backgroundColor, color: ColorScheme.fontColor }">
-  <div class="ListTitle" v-bind:style="{ backgroundColor: ColorScheme.primary, color: ColorScheme.fontColor }">
+  <div class="ListTitle">
   <Input style="font-weight: bold" fontSize="l" :onSubmit="setTitle" txtAlign="left" size="l" :submitOnBlur="true" :data="title" :clearOnSubmit="false" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.fontColor"></Input>
-</div>
+  </div>
   <Input fontSize="s" placeholder="New task" fontSizeOnFocus="l" :autoFocus="true" class="ListInput" :autoComplete="history" :onSubmit="additem" size="l" :submitOnBlur="false" :clearOnSubmit="true" txtAlign="center" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.white"></Input>
 <div class="ListItems">
   <div v-for="(item, index) in items">
@@ -27,8 +27,7 @@ export default {
   name: 'List',
   props: {
     id: Number,
-    data: Object,
-    scheme: String
+    data: Object
   },
     components: {
     ListItem,
@@ -39,7 +38,7 @@ export default {
       items: [],
       title: "My List",
       history: [],
-      ColorScheme: ColorScheme[this.scheme],
+      ColorScheme: ColorScheme,
       Sizes: Sizes
     }
   },
@@ -48,7 +47,8 @@ export default {
       this.items = this.data.items || [];
       this.title = this.data.title || 'My List';
       this.history = this.data.history || [];
-    //  this.scheme = this.data.scheme || 'default';
+      this.scheme = this.data.scheme || 'default';
+      this.ColorScheme = this.ColorScheme[this.scheme];
     }
   },
   methods: {
@@ -96,7 +96,6 @@ export default {
 <style scoped>
 .List{
   width: 100%;
-  max-width: 700px;
   height: 100%;
   overflow-x: hidden;
   display: flex;
@@ -133,8 +132,5 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-.ListInput{
-  border-bottom: 2px solid black;
 }
 </style>

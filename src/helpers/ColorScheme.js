@@ -1,6 +1,6 @@
 const ColorScheme = {
   "red": {
-    primary: "#637EE0",
+    primary: "#AA3F44",
     secondary: "#637EE0",
     backgroundColor: "white",
     white: "white",
@@ -10,16 +10,18 @@ const ColorScheme = {
   "unicorn": {
     primary: "black",
     secondary: "#FF5733",
+    backgroundColor: "white",
     white: "white",
     black: "black",
-    fontColor: "white"
+    fontColor: "black"
   },
   "default": {
     primary: "#3d3d3d",
-    secondary: "#FF5733",
+    secondary: "#3d3d3d",
+    backgroundColor: "white",
     white: "white",
     black: "black",
-    fontColor: "white"
+    fontColor: "black"
   }
 }
 export default ColorScheme;
