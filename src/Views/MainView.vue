@@ -4,9 +4,11 @@
       <List v-if="!toggleMenu && DataManager.listData[selectedListId]" :id="selectedListId" :data="DataManager.listData[selectedListId]" scheme='red'></List>
   </div>
   <div class="menu" v-touch:swipe.down="closeMenu" v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
-    <img src="../assets/logo.png" alt=" http://www.freepik.com" class="logo" style="margin-bottom: 25px">
-    Select a list
-    <div @click="newList">add list</div>
+    <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;border:2px solid white; display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
+      <p>VUE<br>LIST</p>
+    </div>
+    <div style="font-size: 1em;padding: 10px;width: 100%;height:5em;border:1px solid #3d3d3d; display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
+CREATE NEW LIST</div>
     <div class="menu-items-wrapper">
     <div v-for="(item, index) in DataManager.lists" @click="select(item)" class="menu-item">
       {{DataManager.listData[item].title}}
@@ -86,7 +88,12 @@ export default {
 }
 .menu-item{
   padding: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #3d3d3d;
+  font-weight: lighter;
+  text-align: center;
+  font-size: 1em;
+  background: #3d3d3d;
+  color: white;
 }
 .logo{
   padding: 10px;

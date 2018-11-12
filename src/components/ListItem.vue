@@ -5,7 +5,7 @@
 
     <div class="listItemTxt">
       <div class="txt">{{item.txt}}</div>
-      <div class="txtDate" style="font-size: 0.5em">{{moment(item.key).fromNow(true)}} by <b>{{UserManager.userName}}</b></div>
+      <div class="txtDate" style="font-size: 0.5em">{{moment(item.key).fromNow(true)}}</div>
     </div>
   </div>
 </template>
@@ -39,6 +39,7 @@ export default {
     }
   },
   created(){
+    console.log(this.scheme);
 
   },
   methods: {

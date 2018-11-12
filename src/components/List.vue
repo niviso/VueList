@@ -27,7 +27,8 @@ export default {
   name: 'List',
   props: {
     id: Number,
-    data: Object
+    data: Object,
+    scheme: String
   },
     components: {
     ListItem,
@@ -38,8 +39,7 @@ export default {
       items: [],
       title: "My List",
       history: [],
-      scheme: "red",
-      ColorScheme: ColorScheme['red'],
+      ColorScheme: ColorScheme[this.scheme],
       Sizes: Sizes
     }
   },
@@ -48,7 +48,7 @@ export default {
       this.items = this.data.items || [];
       this.title = this.data.title || 'My List';
       this.history = this.data.history || [];
-      this.scheme = this.data.scheme || 'default';
+    //  this.scheme = this.data.scheme || 'default';
     }
   },
   methods: {

@@ -3,15 +3,16 @@
     <div class="wrapper">
 
       <div class="content" :style="{ display: (stage == 1 ? 'flex' : 'none')}" @click="stage = 2">
-        <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;border:2px solid white; display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">VUE<br>LIST</div>
-    <img src="https://media.giphy.com/media/12yixaK3jASpb2/giphy.gif" width="50">
-        
-        <div style="font-size: 1em;padding: 10px;margin-top: 50px;opacity: 0.4"><b>Press anywhere to continue</b></div>
+        <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;border:2px solid white; display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
+          <p class="pulse">VUE<br>LIST</p>
+        </div>
+
+        <div style="font-size: 1em;padding: 10px;margin-top: 50px;opacity: 0.4" class=""><b>Press anywhere to continue</b></div>
 
       </div>
       <div class="content" :style="{ display: (stage == 2 ? 'flex' : 'none')}" @click="stage = 3">
         <div class="text">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
       </div>
     </div>
       <div class="content" :style="{ display: (stage == 3 ? 'flex' : 'none')}">
@@ -126,7 +127,7 @@ export default {
 }
 
 .pulse{
-  animation: pulse 3s infinite ease;
+  animation: pulse 2s infinite ease;
 
 }
 
@@ -141,14 +142,14 @@ export default {
 
 @keyframes pulse{
   0%{
-    transform: rotate(-5deg);
+    opacity: 1;
   }
   50%{
-    transform: rotate(5deg) scale(1.1,1.1);
+    opacity: 0.5;
 
   }
   100%{
-    transform: rotate(-5deg);
+    opacity: 1;
 
   }
 }
