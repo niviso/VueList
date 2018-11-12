@@ -3,10 +3,10 @@
     <div class="wrapper">
 
       <div class="content" :style="{ display: (stage == 1 ? 'flex' : 'none')}" @click="stage = 2">
-        <div style="font-size: 3em;padding: 10px;"><b>Catlist</b></div>
-
-        <img src="../assets/logo.png" alt=" http://www.freepik.com" class="logo pulse">
-        <div style="font-size: 1em;padding: 10px;margin-top: 50px;opacity: 0.4"><b>Paw anywhere to continue</b></div>
+        <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;border:2px solid white; display:flex;justify-content:center;align-items:center;font-weight: lighter">VueList</div>
+    <img src="https://media.giphy.com/media/12yixaK3jASpb2/giphy.gif" width="50">
+        
+        <div style="font-size: 1em;padding: 10px;margin-top: 50px;opacity: 0.4"><b>Press anywhere to continue</b></div>
 
       </div>
       <div class="content" :style="{ display: (stage == 2 ? 'flex' : 'none')}" @click="stage = 3">
@@ -37,7 +37,7 @@ export default {
   },
   data () {
     return {
-      color: "red",
+      color: "default",
       stage: 1,
       UserManager: UserManager,
       DataManager : DataManager
@@ -71,7 +71,8 @@ export default {
 #myView {
   width: 100%;
   height: 100%;
-  background: #637EE0;
+  background: #3d3d3d;
+  color: white;
   position: absolute;
   top:0%;
   left:0%;
