@@ -3,7 +3,7 @@
     <div class="wrapper">
 
       <div class="content" :style="{ display: (stage == 1 ? 'flex' : 'none')}" @click="stage = 2">
-        <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;border:2px solid white; display:flex;justify-content:center;align-items:center;font-weight: lighter">VueList</div>
+        <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;border:2px solid white; display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">VUE<br>LIST</div>
     <img src="https://media.giphy.com/media/12yixaK3jASpb2/giphy.gif" width="50">
         
         <div style="font-size: 1em;padding: 10px;margin-top: 50px;opacity: 0.4"><b>Press anywhere to continue</b></div>
