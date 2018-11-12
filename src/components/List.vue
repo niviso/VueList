@@ -128,12 +128,13 @@ export default {
 .NoItems{
   text-align: center;
   height: 100%;
+  font-weight: lighter;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 .ListInput{
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
 }
 </style>

@@ -131,6 +131,7 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   padding: 10px;
+  font-weight: lighter;
   position: relative;
 }
 .autoComplete{

@@ -25,6 +25,11 @@ const DataManager = {
         scheme: "default"
       }
     },
+    deleteList: function(id){
+      this.lists = this.lists.filter(function (list) {
+        return (list !== id);
+      });
+    },
     createList: function(){
       let id = 0;
       let listObj = null;
