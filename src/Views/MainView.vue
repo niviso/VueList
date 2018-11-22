@@ -4,7 +4,7 @@
     <div class="List" v-touch:swipe.up="openMenu" v-if="!toggleMenu && DataManager.listData[selectedListId]">
       <List :id="selectedListId" :data="DataManager.listData[selectedListId]"></List>
     </div>
-    <div v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
+    <div class="ListSelect" v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
       <ListSelect :select="select"></ListSelect>
     </div>
   </div>
@@ -88,6 +88,10 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+  }
+  .ListSelect{
+    height: 100%;
+    width: 100%;
   }
   .Menu{
     width: 100%;
