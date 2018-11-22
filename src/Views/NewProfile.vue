@@ -10,13 +10,12 @@
         <div style="font-size: 1em;padding: 10px;margin-top: 50px;opacity: 0.4" class=""><b>Press anywhere to continue</b></div>
 
       </div>
-      <div class="content" :style="{ display: (stage == 2 ? 'flex' : 'none')}" @click="stage = 3">
+      <div class="content" :style="{ display: (stage == 2 ? 'flex' : 'none')}" @click="generate()">
         <div class="text">
 
       </div>
     </div>
       <div class="content" :style="{ display: (stage == 3 ? 'flex' : 'none')}">
-        <img src="../assets/logo.png" alt=" http://www.freepik.com" class="logo" style="margin-bottom: 25px">
 
         <Input size="l" fontSize="m" placeholder="Username" txtAlign="center" bgColor="white" fontColor="black" fontSizeOnFocus="l"  :submitOnBlur="true" :onSubmit="setName"></Input>
         <Input size="l" type="password" fontSize="m" placeholder="Password" txtAlign="center" bgColor="white" fontColor="black" fontSizeOnFocus="l" :submitOnBlur="true" :onSubmit="setPassword"></Input>
@@ -54,12 +53,7 @@ export default {
   setPassword(password){
     this.UserManager.password = password;
   },
-  test(){
-    if(!this.UserManager.userName){
-    }
-    else if(!this.UserManager.password){
-
-    }
+  generate(){
     this.DataManager.createList();
 
     window.location = "/#/";

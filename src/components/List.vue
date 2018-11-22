@@ -1,10 +1,12 @@
 <template>
   <div class="List"
   v-bind:style="{ backgroundColor: ColorScheme.backgroundColor, color: ColorScheme.fontColor }">
+  <div v-bind:style="{ backgroundColor: ColorScheme.primary}">
   <div class="ListTitle">
   <Input style="font-weight: bold" fontSize="l" :onSubmit="setTitle" txtAlign="left" size="l" :submitOnBlur="true" :data="title" :clearOnSubmit="false" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.fontColor"></Input>
   </div>
   <Input fontSize="s" placeholder="New task" fontSizeOnFocus="l" :autoFocus="true" class="ListInput" :autoComplete="history" :onSubmit="additem" size="l" :submitOnBlur="false" :clearOnSubmit="true" txtAlign="center" :bgColor="ColorScheme.primary" :fontColor="ColorScheme.white"></Input>
+  </div>
 <div class="ListItems">
   <div v-for="(item, index) in items">
         <ListItem size="m" v-bind:item="item" :removeItem="removeItem" :evenorodd="index%2" :scheme="scheme"></ListItem>

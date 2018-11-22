@@ -7,9 +7,9 @@ const ColorScheme = {
     black: "black",
     fontColor: "black"
   },
-  "unicorn": {
-    primary: "black",
-    secondary: "#FF5733",
+  "orange": {
+    primary: "#ffac4b",
+    secondary: "#ff9314",
     backgroundColor: "white",
     white: "white",
     black: "black",

@@ -152,7 +152,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.2;
+  opacity: 0.5;
 }
 
 @keyframes fadeIn{

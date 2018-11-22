@@ -21,6 +21,7 @@ export default {
 </script>
 
 <style>
+@import "styles/_general.scss";
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,700,700i');*{
   padding: 0px;
   margin:0px;
@@ -29,7 +30,6 @@ export default {
 font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: green;
   width: 100%;
   height: 100%;
 

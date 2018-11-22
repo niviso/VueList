@@ -1,175 +1,97 @@
 <template>
-  <div class="wrapper">
-    <div class="List" v-touch:swipe.up="openMenu">
-      <List v-if="!toggleMenu && DataManager.listData[selectedListId]" :id="selectedListId" :data="DataManager.listData[selectedListId]" scheme='red'></List>
-  </div>
-  <div class="menu" v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
-    <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;  display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
-      <p class="pulse">VUE<br>LIST</p>
+  <div class="MainView">
+  <div class="Content">
+    <div class="List" v-touch:swipe.up="openMenu" v-if="!toggleMenu && DataManager.listData[selectedListId]">
+      <List :id="selectedListId" :data="DataManager.listData[selectedListId]"></List>
     </div>
-    <div @click="newList" style="font-size: 1em;padding: 10px;width: 100%;height:5em;border:1px solid #3d3d3d; display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
-CREATE NEW LIST</div>
-    <div class="menu-items-wrapper">
-    <div v-for="(item, index) in DataManager.lists" class="menu-item" v-touch:swipe="toggleDelete(item)">
-      <div class="menu-item-inner" v-bind:style="{width: (toggleDeleteTarget == item ? '75%' : '100%')}" @click="select(item)">
-      {{DataManager.listData[item].title}}
-      </div>
-      <div class="menu-item-delete" v-bind:style="{width: (toggleDeleteTarget == item ? '25%' : '0%')}" @click="deleteList">
-        <img src="https://img.icons8.com/metro/1600/trash.png" width="20%">
-      </div>
+    <div v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
+      <ListSelect :select="select"></ListSelect>
     </div>
   </div>
 
+    <Menu class="Menu"></Menu>
   </div>
-</div>
 </template>
 
 <script>
-import List from '../components/List';
-import DataManager from "../managers/DataManager";
-
-export default {
-  name: 'MainView',
-  components: {
-    List
-  },
-  data () {
-    return {
-      color: "red",
-      selectedListId: null,
-      toggleMenu: true,
-      toggleDeleteTarget: null,
-      DataManager: DataManager
-    }
-  },
-  methods:{
-    openMenu(){
-      this.toggleMenu = true;
+  import List from '../components/List';
+  import Menu from './Menu';
+  import ListSelect from '../components/ListSelect';
+  import DataManager from "../managers/DataManager";
+  
+  export default {
+    name: 'MainView',
+    components: {
+      List,
+      Menu,
+      ListSelect
     },
-    closeMenu(){
-      if(this.selectedListId == null){
-        return;
+    data() {
+      return {
+        color: "red",
+        selectedListId: null,
+        toggleMenu: true,
+        toggleDeleteTarget: null,
+        DataManager: DataManager
       }
-      this.toggleMenu = false;
     },
-    select(id){
-      this.selectedListId = id;
-      this.toggleDeleteTarget = null;
-      this.closeMenu();
-    },
-    newList(){
-      this.DataManager.createList();
-    },
-    toggleDelete(id){
-      return (direction, event) => {
-      if(direction == "left"){
-        this.toggleDeleteTarget = id;
-      } else if(direction == "right" && id == this.toggleDeleteTarget) {
+    methods: {
+      openMenu() {
+        this.toggleMenu = true;
+      },
+      closeMenu() {
+        if (this.selectedListId == null) {
+          return;
+        }
+        this.toggleMenu = false;
+      },
+      select(id) {
+        this.selectedListId = id;
         this.toggleDeleteTarget = null;
+        this.closeMenu();
+      },
+      newList() {
+        this.DataManager.createList();
+      },
+      toggleDelete(id) {
+        return (direction, event) => {
+          if (direction == "left") {
+            this.toggleDeleteTarget = id;
+          } else if (direction == "right" && id == this.toggleDeleteTarget) {
+            this.toggleDeleteTarget = null;
+          }
+        }
+      },
+      deleteList() {
+        this.DataManager.deleteList(this.toggleDeleteTarget);
+        this.toggleDeleteTarget = null;
+  
       }
+    },
+    created() {
+      //this.select(1);
     }
-  },
-  deleteList(){
-    this.DataManager.deleteList(this.toggleDeleteTarget);
-    this.toggleDeleteTarget = null;
-
   }
-  },
-  created(){
-
-  }
-}
 </script>
 
-<style>
-
-.List{
-  height: 100%;
-  width: 100%;
-}
-.menu{
-  position: absolute;
-  top:0%;
-  left:0%;
-  width: 100%;
-  height: 100%;
-  background: white;
-  opacity: 0.8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.25s all ease-in-out;
-  flex-direction: column;
-  overflow: hidden;
-}
-.menu-items-wrapper{
-  font-size: 2em;
-  height: 100%;
-  width: 100%;
-}
-.menu-item{
-  font-weight: lighter;
-  text-align: center;
-  font-size: 1em;
-  background: #3d3d3d;
-  border-bottom: 1px solid white;
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.menu-item-inner{
-  padding: 10px;
-    transition: 0.25s all ease-in-out;
-  font-weight: lighter;
-  text-align: center;
-  font-size: 1em;
-  background: #3d3d3d;
-  color: white;
-}
-.menu-item-delete{
-      width: 0%;
-      transition:0.25s all ease-in-out;
-      background: #AA3F44;
-      font-size: 0.5em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      overflow: hidden;
-
-}
-.logo{
-  padding: 10px;
-}
-.wrapper {
-  width: 100%;
-  height: 100%;
-  background: white;
-  position: absolute;
-  top:0%;
-  left:0%;
-}
-
-.delete{
-  background: red!important;
-}
-
-@keyframes fromLeft{
-  from{
-    width: 0;
+<style scoped>
+  .MainView{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
-  to{
-    width: 25%;
+  .Content{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
-}
-
-@keyframes fadeIn{
-  from{
-    opacity: 0;
+  .Menu{
+    width: 100%;
+    height: 4em;
+    background: green;
   }
-  to{
-    opacity: 1;
-  }
-}
 </style>
