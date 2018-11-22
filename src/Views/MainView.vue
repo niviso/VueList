@@ -8,8 +8,9 @@
       <ListSelect :select="select"></ListSelect>
     </div>
   </div>
-
-    <Menu class="Menu"></Menu>
+  <div class="Menu">
+    <Menu></Menu>
+    </div>
   </div>
 </template>
 
@@ -96,5 +97,6 @@
   .Menu{
     width: 100%;
     height: 4em;
+    background: white;
   }
 </style>

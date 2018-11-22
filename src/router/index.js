@@ -10,11 +10,13 @@ export default new Router({
     {
       path: '/',
       name: 'MainView',
+      meta: {title: 'Home'},
       component: MainView
     },
     {
       path: '/new',
       name: 'NewProfile',
+      meta: {title: 'Home'},
       component: NewProfile
     }
   ]
