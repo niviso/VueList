@@ -1,7 +1,7 @@
 <template>
     <div class="menu">
         <div class="menu-top">
-        <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;  display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
+        <div style="font-size: 3em;padding: 10px;width: 5em;height:5em;  display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center;">
             <p class="pulse">VUE<br>LIST</p>
         </div>
         <div @click="newList" style="font-size: 1em;padding: 10px;width: 100%;height:5em;border:1px solid #3d3d3d; display:flex;justify-content:center;align-items:center;font-weight: lighter;letter-spacing: 10px;text-align:center">
@@ -74,6 +74,15 @@
     transition: 0.25s all ease-in-out;
     flex-direction: column;
     overflow: hidden;
+  }
+
+  .menu-top{
+      width: 100%;
+          display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s all ease-in-out;
+    flex-direction: column;
   }
   
   .menu-items-wrapper {
