@@ -111,6 +111,9 @@
     font-size: 1em;
     background: #3d3d3d;
     color: white;
+          white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
   }
   
   .menu-item-delete {
