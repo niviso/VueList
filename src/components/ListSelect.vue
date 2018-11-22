@@ -63,7 +63,7 @@
   .active {
     background: red!important;
   }
-  
+
   .menu {
     width: 100%;
     height: 100%;
@@ -84,14 +84,14 @@
     transition: 0.25s all ease-in-out;
     flex-direction: column;
   }
-  
+
   .menu-items-wrapper {
     font-size: 2em;
     height: 100%;
     width: 100%;
     overflow-y: scroll;
   }
-  
+
   .menu-item {
     font-weight: lighter;
     text-align: center;
@@ -102,7 +102,7 @@
     justify-content: flex-start;
     width: 100%;
   }
-  
+
   .menu-item-inner {
     padding: 10px;
     transition: 0.25s all ease-in-out;
@@ -111,11 +111,11 @@
     font-size: 1em;
     background: #3d3d3d;
     color: white;
-          white-space: nowrap; 
+          white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   }
-  
+
   .menu-item-delete {
     width: 0%;
     transition: 0.25s all ease-in-out;
@@ -127,11 +127,11 @@
     font-weight: bold;
     overflow: hidden;
   }
-  
+
   .logo {
     padding: 10px;
   }
-  
+
   .wrapper {
     width: 100%;
     height: 100%;
@@ -140,11 +140,11 @@
     top: 0%;
     left: 0%;
   }
-  
+
   .delete {
     background: red!important;
   }
-  
+
   @keyframes fromLeft {
     from {
       width: 0;
@@ -153,7 +153,7 @@
       width: 25%;
     }
   }
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;

@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="Menu">
-    <Menu></Menu>
+    <Menu :view="view"></Menu>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@
   import Menu from './Menu';
   import ListSelect from '../components/ListSelect';
   import DataManager from "../managers/DataManager";
-  
+
   export default {
     name: 'MainView',
     components: {
@@ -30,6 +30,7 @@
     data() {
       return {
         color: "red",
+        view: "Home",
         selectedListId: null,
         toggleMenu: true,
         toggleDeleteTarget: null,
@@ -66,7 +67,7 @@
       deleteList() {
         this.DataManager.deleteList(this.toggleDeleteTarget);
         this.toggleDeleteTarget = null;
-  
+
       }
     },
     created() {
@@ -76,6 +77,9 @@
 </script>
 
 <style scoped>
+::-webkit-scrollbar {
+    display: none;
+}
   .MainView{
     position: fixed;
     top: 0%;
