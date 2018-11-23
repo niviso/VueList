@@ -1,10 +1,10 @@
 <template>
   <div class="MainView">
   <div class="Content">
-    <div class="List" v-touch:swipe.up="openMenu" v-if="!toggleMenu && DataManager.listData[selectedListId]">
+    <div class="List" v-touch:swipe.up="goHome" v-if="DataManager.listData[selectedListId] && view == 'List'">
       <List :id="selectedListId" :data="DataManager.listData[selectedListId]"></List>
     </div>
-    <div class="ListSelect" v-bind:style="{opacity: (toggleMenu ? '1' : '0'),pointerEvents: (toggleMenu ? 'auto' : 'none')}">
+    <div class="ListSelect" v-if="view == 'Home'">
       <ListSelect :select="select"></ListSelect>
     </div>
   </div>
@@ -33,26 +33,22 @@
         color: "red",
         view: "Home",
         selectedListId: null,
-        toggleMenu: true,
         toggleDeleteTarget: null,
         DataManager: DataManager,
         State: this.State
       }
     },
     methods: {
-      openMenu() {
-        this.toggleMenu = true;
+      goHome() {
+        this.setView("Home");
       },
-      closeMenu() {
-        if (this.selectedListId == null) {
-          return;
-        }
-        this.toggleMenu = false;
+      setView(view){
+        this.view = view;
       },
       select(id) {
         this.selectedListId = id;
         this.toggleDeleteTarget = null;
-        this.closeMenu();
+        this.setView("List");
       },
       newList() {
         this.DataManager.createList();
