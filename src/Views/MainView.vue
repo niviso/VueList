@@ -19,13 +19,14 @@
   import Menu from './Menu';
   import ListSelect from '../components/ListSelect';
   import DataManager from "../managers/DataManager";
-
+  import State from "../helpers/state";
   export default {
     name: 'MainView',
     components: {
       List,
       Menu,
-      ListSelect
+      ListSelect,
+      State
     },
     data() {
       return {
@@ -34,7 +35,8 @@
         selectedListId: null,
         toggleMenu: true,
         toggleDeleteTarget: null,
-        DataManager: DataManager
+        DataManager: DataManager,
+        State: this.State
       }
     },
     methods: {
@@ -71,6 +73,7 @@
       }
     },
     created() {
+      console.log(State.view);
       //this.select(1);
     }
   }
