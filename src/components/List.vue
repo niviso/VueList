@@ -29,7 +29,8 @@ export default {
   name: 'List',
   props: {
     id: Number,
-    data: Object
+    data: Object,
+    save: Function
   },
     components: {
     ListItem,
@@ -57,7 +58,7 @@ export default {
       additem (txt) {
         let newItem = {txt: txt, key: Date.now()}
         this.items.push(newItem);
-        this.save();
+        this.saveList();
       },
       removeItem(removeItem){
         this.items = this.items.filter(function (item) {
@@ -66,21 +67,19 @@ export default {
         if(this.history.indexOf(removeItem) === -1){
           this.history.push(removeItem);
         }
-        this.save();
+        this.saveList();
 
       },
       setTitle(title){
         this.title = title;
-        this.save();
+        this.saveList();
 
       },
       generateListObj(){
         return JSON.stringify({title: this.title,scheme: "default", items:this.items,history: this.history});
       },
-      save(){
-        LocalStorageHelper.setStorage(this.generateListObj(),"list_" + this.id);
-        console.log(this.generateListObj());
-        console.log("Saving...");
+      saveList(){
+        this.save(this.id, this.generateListObj());
       },
       fetchData(){
         let data = LocalStorageHelper.getStorage("list_" + this.id);

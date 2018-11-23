@@ -2,7 +2,7 @@
   <div class="MainView">
   <div class="Content">
     <div class="List" v-touch:swipe.up="goHome" v-if="DataManager.listData[selectedListId] && view == 'List'">
-      <List :id="selectedListId" :data="DataManager.listData[selectedListId]"></List>
+      <List :id="selectedListId" :save="save" :data="DataManager.listData[selectedListId]"></List>
     </div>
     <div class="ListSelect" v-if="view == 'Home'">
       <ListSelect :select="select"></ListSelect>
@@ -49,6 +49,9 @@
         this.selectedListId = id;
         this.toggleDeleteTarget = null;
         this.setView("List");
+      },
+      save(id,data){
+        this.DataManager.saveList(id,data);
       },
       newList() {
         this.DataManager.createList();

@@ -14,7 +14,6 @@ const DataManager = {
           parsedLists[list] = LocalStorageHelper.getStorage("list_" + list);
         }
         this.listData = parsedLists;
-        console.log(this.listData);
       }
     },
     generateDefaultList: function(id){
@@ -44,7 +43,10 @@ const DataManager = {
       LocalStorageHelper.setStorage(JSON.stringify(this.lists),"catlist");
       LocalStorageHelper.setStorage(JSON.stringify(listObj),"list_"+id);
     },
-    saveList: function(){
+    saveList: function(id,data){
+      console.log(" Saving",id,data);
+      LocalStorageHelper.setStorage(data,"list_" + id);
+      this.getLists();
 
     }
 
