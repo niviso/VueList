@@ -21,11 +21,12 @@
   export default {
     name: 'Menu',
     props: {
-      view: String
+      view: String,
+      setView: Function
     },
     methods:{
       select(i){
-        this.view = i;
+        this.setView(i);
       }
     }
   }

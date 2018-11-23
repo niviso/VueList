@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="Menu">
-    <Menu :view="view"></Menu>
+    <Menu :setView="setView" :view="view"></Menu>
     </div>
   </div>
 </template>
