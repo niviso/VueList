@@ -3,8 +3,8 @@
     <div :class="[view == 'Home' ? 'active' : '', 'MenuItem']" @click="select('Home')">
       Home
     </div>
-    <div class="MenuItem" @click="select('Share')" :class="[view == 'Share' ? 'active' : '', 'MenuItem']" >
-      Share
+    <div class="MenuItem" @click="select('List')" :class="[view == 'List' ? 'active' : '', 'MenuItem', selectedListId ? '' : 'inactive']" >
+      List
 
     </div>
     <div class="MenuItem" @click="select('Me')":class="[view == 'Me' ? 'active' : '', 'MenuItem']" >
@@ -22,7 +22,8 @@
     name: 'Menu',
     props: {
       view: String,
-      setView: Function
+      setView: Function,
+      selectedListId: Number
     },
     methods:{
       select(i){
@@ -52,5 +53,9 @@
   .active {
     background: orange;
     color: white;
+  }
+  .inactive{
+    opacity: 0.3;
+    pointer-events: none;
   }
 </style>
